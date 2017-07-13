@@ -4,7 +4,8 @@
   "description": "a mvvm framework called 'p', similar with angularJS",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint ./",
+    "lint-fix": "eslint --fix ./"
   },
   "repository": {
     "type": "git",
@@ -21,5 +22,7 @@
   "bugs": {
     "url": "https://github.com/poplark/pjs/issues"
   },
-  "homepage": "https://github.com/poplark/pjs#readme"
+  "homepage": "https://github.com/poplark/pjs#readme",
+  "dependencies": {
+  }
 }

@@ -5,7 +5,7 @@ const watcher = {
       obj: obj,
       item: item,
       callback: callback
-    }
+    };
     this.watches.push(p);
   },
   watches: [],
@@ -17,6 +17,6 @@ const watcher = {
       }
     });
   }
-}
+};
 
 export default watcher;

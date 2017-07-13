@@ -1,1 +1,1 @@
-window.pjs = {}
+window.pjs = {};

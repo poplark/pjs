@@ -1,14 +1,28 @@
+const isArray = arg => {
+  return arg instanceof Array;
+};
+const isFunc = arg => {
+  return 'function' === typeof arg;
+};
+// const noop = () => {};
 
 const injectorCache = [];
 const injector = args => {
+  if (!isArray(args)) {
+    if (isFunc(args)) {
+      return args();
+    } else {
+      throw 'cann\'t resolve args';
+    }
+  }
   let length = args.length;
 
-  let dependencies = args.slice(0, length);
-  let callback = args[length];
-
   if (length > 1) {
+    let dependencies = args.slice(0, length-1);
+    let callback = args[length-1];
+
     let params = [];
-    dependencies.each( dependency => {
+    dependencies.every( dependency => {
       let p = injectorCache.find( item => {
         return dependency === item.name;
       });
@@ -18,13 +32,22 @@ const injector = args => {
         throw `cann't find ${dependency}`;
       }
     });
-    return callback(...params);
+    if (isFunc(callback)) {
+      return callback(...params);
+    } else {
+      throw 'cann\'t resolve args';
+    }
   } else {
-    return callback();
+    let callback = args[0];
+    if (isFunc(callback)) {
+      return callback();
+    } else {
+      throw 'cann\'t resolve args';
+    }
   }
 };
 
-const inject = (name, arr) => {
+export function inject(name, arr) {
   let p = injectorCache.find( item => {
     return name === item.name;
   });
@@ -36,9 +59,5 @@ const inject = (name, arr) => {
       func: injector(arr)
     });
   }
-};
+}
 
-export default {
-  injector: injector,
-  inject: inject
-};

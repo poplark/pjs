@@ -10,7 +10,7 @@ const watcher = {
   },
   watches: [],
   check: function() {
-    this.watches.forEach(function(item) {
+    this.watches.every(function(item) {
       if(item.old !== JSON.stringify(item.obj['item'])) {
         item.callback(JSON.parse(item.old), item.obj['item']);
         item.old = JSON.stringify(item.obj['item']);

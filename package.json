@@ -1,5 +1,5 @@
 {
-  "name": "pjs",
+  "name": "ppk",
   "version": "0.0.1",
   "description": "a mvvm framework called 'p', similar with angularJS",
   "main": "index.js",
@@ -9,20 +9,26 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/poplark/pjs.git"
+    "url": "git+https://github.com/poplark/ppk.git"
   },
   "keywords": [
     "mvvm",
     "framework",
-    "pjs",
+    "ppk",
     "angularJS"
   ],
   "author": "poplark",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/poplark/pjs/issues"
+    "url": "https://github.com/poplark/ppk/issues"
   },
-  "homepage": "https://github.com/poplark/pjs#readme",
-  "dependencies": {
+  "homepage": "https://github.com/poplark/ppk#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.1.1",
+    "babel-preset-env": "^1.6.0",
+    "html-webpack-plugin": "^2.29.0",
+    "webpack": "^3.2.0"
   }
 }

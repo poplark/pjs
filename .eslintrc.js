@@ -5,7 +5,11 @@ const eslintrc = {
   'env': Object.assign({}, basic.env),
   'extends': basic.extends,
   'parserOptions': Object.assign({}, basic.parserOptions),
-  'rules': Object.assign({}, basic.rules, indent)
+  'rules': Object.assign({}, basic.rules, indent),
+  'globals': {
+    'window': true,
+    'ppk': true
+  }
 };
 
 if ('DEV' === process.env.RUN_ENV) {

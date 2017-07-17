@@ -12,7 +12,12 @@ const eslintrc = {
   }
 };
 
-if ('DEV' === process.env.RUN_ENV) {
+if ('PRO' === process.env.RUN_ENV){
+  Object.assign(eslintrc.rules, {
+    'no-console': true,
+    'no-plusplus': true,
+  });
+} else {
   console.log('You are in development environment now.');
   Object.assign(eslintrc.rules, {
     'no-console': 0,

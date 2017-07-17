@@ -1,12 +1,12 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-var devtool = 'eval';
-if ('DEV' === process.env.RUN_ENV) {
+let devtool;
+if ('PRO' === process.env.RUN_ENV) {
+  devtool = 'source-map';
+} else {
   console.log('You are in development environment now.');
   devtool = 'eval';
-} else if ('PRO' === process.env.RUN_ENV) {
-  devtool = 'source-map';
 }
 
 module.exports = {

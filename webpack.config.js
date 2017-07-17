@@ -40,6 +40,14 @@ module.exports = {
             ]
           }
         }
+      }, {
+        test: /\.js$/,
+        enforce: "pre",
+        exclude: /(node_modules|ref|dist)/,
+        loader: "eslint-loader",
+        options: {
+          // eslint options (if necessary)
+        }
       }
     ]
   },

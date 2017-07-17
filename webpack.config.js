@@ -1,6 +1,14 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+var devtool = 'eval';
+if ('DEV' === process.env.RUN_ENV) {
+  console.log('You are in development environment now.');
+  devtool = 'eval';
+} else if ('PRO' === process.env.RUN_ENV) {
+  devtool = 'source-map';
+}
+
 module.exports = {
   entry: {
     'index': './example/index.js',
@@ -11,18 +19,25 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     sourceMapFilename: '[name].js.map'
   },
+  devtool: devtool,
   module: {
     rules: [
       {
         test: /\.js$/,
-        exclude: /(node_modules|ref|dist|example|)/,
+        exclude: /(node_modules|ref|dist)/,
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['env'],
-            cacheDirectory: true,
-            minified: true,
-            sourceMaps: true
+            presets: [
+              [
+                "env",
+                {
+                  "targets": {
+                    "browsers": ["last 2 versions", "ie >= 9"]
+                  }
+                }
+              ]
+            ]
           }
         }
       }
@@ -31,7 +46,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: 'example/index.html'
+      template: './example/index.html'
     })
   ]
 };

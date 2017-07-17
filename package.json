@@ -1,9 +1,10 @@
 {
   "name": "ppk",
   "version": "0.0.1",
-  "description": "a mvvm framework called 'p', similar with angularJS",
+  "description": "a mvvm framework called 'ppk', similar with angularJS",
   "main": "index.js",
   "scripts": {
+    "build": "webpack --watch",
     "lint": "eslint ./",
     "lint-fix": "eslint --fix ./"
   },
